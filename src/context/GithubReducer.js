@@ -6,6 +6,11 @@ const GithubReducer = (state, action) => {
                 ...state,
                 loading: true
             }
+        case 'LOAD_FALSE': 
+            return {
+                ...state,
+                loading: false
+            }
         case 'CLEAR': 
             return {
                 ...state,

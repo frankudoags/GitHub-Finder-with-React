@@ -21,6 +21,9 @@ const UserSearch = () => {
     //Helper Function to Set Loading to True with the dispatch method from useReducer;
     const setLoadingTrue = () => dispatch({type: 'LOAD_TRUE'})
 
+    //Helper Function to Set Loading to false with the dispatch method from useReducer;
+    const setLoadingFalse = () => dispatch({type: 'LOAD_FALSE'})
+
     //function that handles the form submission
     const handleSubmit = async (e)=> {
         e.preventDefault();
@@ -31,8 +34,15 @@ const UserSearch = () => {
             //@todo - Search users by sending the text to the GitHub context to initiate the search
             setLoadingTrue();
            const users = await searchUser(text);
+           if(users.status === 404) {
            dispatch({type: 'GET_USERS', payload: users});
             setText('');
+           }
+           else {
+            setLoadingFalse();
+            setAlert('User not Found', 'error');
+            setText('');
+           }
         }
     }
 
