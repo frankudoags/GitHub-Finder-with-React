@@ -35,12 +35,12 @@ const UserSearch = () => {
             setLoadingTrue();
            const users = await searchUser(text);
            if(users.status === 404) {
-           dispatch({type: 'GET_USERS', payload: users});
+            setLoadingFalse();
+            setAlert('User not Found', 'error');
             setText('');
            }
            else {
-            setLoadingFalse();
-            setAlert('User not Found', 'error');
+            dispatch({type: 'GET_USERS', payload: users});
             setText('');
            }
         }
