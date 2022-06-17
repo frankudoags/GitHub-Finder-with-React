@@ -9,20 +9,20 @@ const UserSearch = () => {
     //Global state from Github Context
     const {users, dispatch} = useContext(GithubContext);
 
-    //Global state from Alert Context
+    //Import function to set an alert from Alert Context
     const {setAlert} = useContext(AlertContext);
 
     //function that handles the textchange from the input tag
     const handleTextChange = (e)=> setText(e.target.value);
 
     //function to clear users array
-    const clearUsers = () => dispatch({type: 'CLEAR'})
+    const clearUsers = () => dispatch({type: 'CLEAR'});
 
     //Helper Function to Set Loading to True with the dispatch method from useReducer;
-    const setLoadingTrue = () => dispatch({type: 'LOAD_TRUE'})
+    const setLoadingTrue = () => dispatch({type: 'LOAD_TRUE'});
 
     //Helper Function to Set Loading to false with the dispatch method from useReducer;
-    const setLoadingFalse = () => dispatch({type: 'LOAD_FALSE'})
+    const setLoadingFalse = () => dispatch({type: 'LOAD_FALSE'});
 
     //function that handles the form submission
     const handleSubmit = async (e)=> {
